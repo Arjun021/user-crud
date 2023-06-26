@@ -1,0 +1,54 @@
+<div class="main-container">
+  <div class="header-section">
+    <div class="search-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search by email" #input>
+      </mat-form-field>
+    </div>
+    <div class="create-section">
+      <button mat-raised-button color="primary" (click)="createUser()">Create</button>
+    </div>
+  </div>
+
+  <table mat-table [dataSource]="userData" class="mat-elevation-z8">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element; let i = index">
+        <button mat-icon-button color="primary" aria-label="details icon" (click)="viewEmployee(i)">
+         <mat-icon>remove_red_eye</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" aria-label="delete icon" (click)="deleteEmployee(i)">
+          <mat-icon>delete</mat-icon>
+       </button> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+</div>
