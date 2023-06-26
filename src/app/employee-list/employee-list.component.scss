@@ -1,0 +1,18 @@
+.main-container {
+  margin: 2rem;
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    .search-section {
+      width: 80%;
+    }
+  }
+  table {
+    width: 100%;
+  }
+
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+}
