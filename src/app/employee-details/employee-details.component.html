@@ -1,0 +1,19 @@
+<mat-card class="example-card">
+  <mat-card-header *ngIf="employeeDetails">
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{employeeDetails.name}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content >
+    <div *ngIf="employeeDetails">
+      <p>Phone Number: {{employeeDetails.phone}}</p>
+      <p>Email: {{employeeDetails.email}}</p>
+      <p>Address: {{employeeDetails.address}}</p>
+    </div>
+    <div *ngIf="!employeeDetails">
+      No information available
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" routerLink="/">Go back</button>
+  </mat-card-actions>
+</mat-card>
